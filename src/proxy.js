@@ -1,13 +1,10 @@
 import { NextResponse } from "next/server";
-import { auth } from "./lib/auth";
-import { headers } from "next/headers";
+import { getSessionCookie } from "better-auth/cookies";
 
 export async function proxy(request) {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  const sessionCookie = getSessionCookie(request);
 
-  if (!session) {
+  if (!sessionCookie) {
     const loginUrl = new URL("/login", request.url);
     loginUrl.searchParams.set("redirect", request.nextUrl.pathname);
     return NextResponse.redirect(loginUrl);
@@ -15,5 +12,5 @@ export async function proxy(request) {
 }
 
 export const config = {
-  matcher: ["/add-idea", "/my-ideas", "/my-interactions", "/ideas/:path", "/profile"],
+  matcher: ["/add-idea", "/my-ideas", "/my-interactions", "/ideas/:path", "/profile"],  
 };
