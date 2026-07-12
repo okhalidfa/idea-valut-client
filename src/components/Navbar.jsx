@@ -60,21 +60,22 @@ const Navbar = () => {
                 <h3 className="text-sm font-semibold">{user.name}</h3>
                 <p className="text-xs text-violet-600">{user.email}</p>
               </div>
+
               <Link href="/profile">
-              <img
-                src={
-                  user.image ||
-                  `https://api.dicebear.com/9.x/initials/svg?seed=${user.name}`
-                }
-                alt={user.name}
-                referrerPolicy="no-referrer"
-                className="w-11 h-11 rounded-full object-cover border"
-              />
+                <img
+                  src={
+                    user.image ||
+                    `https://api.dicebear.com/9.x/initials/svg?seed=${user.name}`
+                  }
+                  alt={user.name}
+                  referrerPolicy="no-referrer"
+                  className="w-11 h-11 rounded-full object-cover border cursor-pointer hover:opacity-80 transition"
+                />
               </Link>
 
               <button
                 onClick={handleSignOut}
-                className="px-5 py-2 rounded-full border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
+                className="px-5 py-2 rounded-full border border-red-300 text-red-600 hover:bg-red-50 dark:border-red-800 dark:text-red-400 dark:hover:bg-red-950/40 transition cursor-pointer"
               >
                 Logout
               </button>
