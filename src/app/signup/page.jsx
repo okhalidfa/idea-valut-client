@@ -51,6 +51,7 @@ const SignupForm = () => {
 
     if (data) {
       toast.success("Account created successfully!");
+      router.refresh();
       router.push(redirectTo);
     }
 
@@ -144,7 +145,7 @@ const SignupForm = () => {
         >
           <FcGoogle size={18} /> Sign up with Google
         </button>
-
+   
         <p className="text-center text-sm mt-6">
           Already have an account?{" "}
           <Link href="/login" className="text-violet-600 font-medium">

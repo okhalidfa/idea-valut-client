@@ -35,6 +35,7 @@ const LoginForm = () => {
 
     if (data) {
       toast.success("Logged in successfully!");
+      router.refresh();
       router.push(redirectTo);
     }
 
